@@ -6,6 +6,13 @@ from yt_concate.pipeline.steps.downloads_captions import DownloadCaptions
 from yt_concate.pipeline.pipeline import Pipeline
 from yt_concate.utils import Utils
 from yt_concate.pipeline.steps.initialize_yt import InitializeYT
+from yt_concate.pipeline.steps.prefligjt import Preflight
+from yt_concate.pipeline.steps.postflight import Postflight
+from yt_concate.pipeline.steps.read_captions import ReadCaption
+from yt_concate.pipeline.steps.search import Search
+from yt_concate.pipeline.steps.downloads_videos import DownloadVideos
+from yt_concate.pipeline.steps.edit_videos import EditVideos
+
 CHANNEL_ID = 'UCKSVUHI9rbbkXhvAXK-2uxA'
 
 
@@ -16,22 +23,21 @@ def main():
         'limit': 20,
     }
 
-
     steps = [
-        #Preflight(),
+        Preflight(),
         GetVideoList(),
         InitializeYT(),
         DownloadCaptions(),
-        #ReadCaption(),
-        #Search(),
-        #DownloadVideos(),
-        #EditVideo(),
-        #Postflight(),
-        ]
-    utils=Utils()
-    p=Pipeline(steps)
-    p.run(inputs,utils)
+        ReadCaption(),
+        Search(),
+        DownloadVideos(),
+        EditVideos(),
+        Postflight(),
+    ]
+    utils = Utils()
+    p = Pipeline(steps)
+    p.run(inputs, utils)
 
 
-# video_list=get_all_video_in_channel(CHANNEL_ID)
-# print(len(video_list))
+if __name__ == '__main__':
+    main()
