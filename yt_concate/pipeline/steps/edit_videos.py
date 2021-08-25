@@ -13,13 +13,8 @@ class EditVideos(Step):
             start, end = found.time.split('-->')
             video = VideoFileClip(videopath).subclip(float(start), float(end))
             clips.append(video)
-            if len(clips) >inputs['limit']:
+            if len(clips) > inputs['limit']:
                 break
         final_clip = concatenate_videoclips(clips)
         channel_id, search_word = inputs['channel_id'], inputs['search_word']
         final_clip.write_videofile(utils.get_output_filepath(channel_id, search_word))
-
-    def parse_time(self, time):
-        hr, min, sec = time.split(':')
-        sec, ms = sec.split(',')
-        return int(hr), int(min), int(sec) + int(ms) // 1000

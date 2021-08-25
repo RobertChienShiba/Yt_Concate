@@ -1,10 +1,8 @@
 from __future__ import unicode_literals
-import os
 
 import youtube_dl
 
 from yt_concate.pipeline.steps.step import Step
-from yt_concate.setting import VIDEOS_DIRS
 
 
 class DownloadVideos(Step):

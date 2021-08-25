@@ -1,7 +1,4 @@
-import os
-
 from yt_concate.pipeline.steps.step import Step
-from yt_concate.setting import CAPTIONS_DIRS
 
 
 class ReadCaption(Step):

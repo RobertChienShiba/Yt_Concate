@@ -1,8 +1,10 @@
 from yt_concate.pipeline.steps.step import Step
 from yt_concate.model.found import Found
+
+
 class Search(Step):
     def process(self, data, inputs, utils):
-        search_word=inputs['search_word']
+        search_word = inputs['search_word']
         found = []
         for yt in data:
             captions = yt.captions

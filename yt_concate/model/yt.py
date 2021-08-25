@@ -1,6 +1,5 @@
 import os
 
-from yt_concate.setting import DOWNLOADS_DIRS
 from yt_concate.setting import CAPTIONS_DIRS
 from yt_concate.setting import VIDEOS_DIRS
 
