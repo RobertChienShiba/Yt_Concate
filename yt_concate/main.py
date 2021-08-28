@@ -41,7 +41,7 @@ def customize_log_level(type, arg, inputs):
         else:
             print('Not in range of logging ')
             print('set default logging.WARNING')
-            inputs[type] = logging.WARNING  # (30)
+            inputs[type] = logging.DEBUG  # (10)
     except ValueError:
         logging.exception('You print an unavailable integer')
         sys.exit(2)
@@ -54,8 +54,8 @@ def main():
         'limit': 20,
         'cleanup': False,
         'fast': True,
-        'logfile_level': logging.DEBUG,  # (30)
-        'logstream_level': logging.DEBUG,  # (30)
+        'logfile_level': logging.DEBUG,  # (10)
+        'logstream_level': logging.DEBUG,  # (10)
     }
 
     short_opts = 'hc:s:l:'
