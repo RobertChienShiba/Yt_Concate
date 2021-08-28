@@ -1,3 +1,6 @@
+import logging
+import time
+
 from youtube_transcript_api import YouTubeTranscriptApi
 
 from yt_concate.pipeline.steps.step import Step
@@ -5,13 +8,14 @@ from yt_concate.pipeline.steps.step import Step
 
 class DownloadCaptions(Step):
     def process(self, data, inputs, utils):
+        start=time.time()
         for yt in data:
             if utils.caption_file_exist(yt):
                 print('Caption File Has already downloaded')
                 continue
             try:
                 srt = YouTubeTranscriptApi.get_transcript(yt.id, languages=['en'])
-                # print(srt)
+                #print(srt)
             except:
                 print('Error when downloading caption for', yt.url)
                 continue
@@ -20,5 +24,9 @@ class DownloadCaptions(Step):
                 for caption in srt:
                     text_file.write(f"{caption['start']}-->{caption['start'] + caption['duration']:.2f}\n")
                     text_file.write(f"{caption['text']}\n")
-
+        end=time.time()
+        print(end-start)
         return data
+
+
+

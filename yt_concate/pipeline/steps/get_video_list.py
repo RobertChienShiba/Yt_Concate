@@ -1,4 +1,5 @@
 import json
+import logging
 import urllib
 
 from yt_concate.pipeline.steps.step import Step
@@ -8,8 +9,9 @@ from yt_concate.setting import API_KEYS
 class GetVideoList(Step):
     def process(self, data, inputs, utils):
         channel_id = inputs['channel_id']
+        logger=logging.getLogger('logs')
         if utils.video_list_filepath_exist(channel_id):
-            print('video file has already existed')
+            logger.warning('video file has already existed')
             return self.read_file(utils.get_video_list_filepath(channel_id))
         base_video_url = 'https://www.youtube.com/watch?v='
         base_search_url = 'https://www.googleapis.com/youtube/v3/search?'
