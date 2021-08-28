@@ -1,5 +1,5 @@
 import logging
-import os
+import shutil
 
 from yt_concate.pipeline.steps.step import Step
 from yt_concate.setting import CAPTIONS_DIRS
@@ -11,6 +11,9 @@ class Postflight(Step):
         logger = logging.getLogger('logs')
         if inputs['cleanup']:
             if utils.output_filepath_exist(inputs['channel_id'],inputs['search_word']):
-                os.rmdir(CAPTIONS_DIRS)
-                os.rmdir(VIDEOS_DIRS)
+                try:
+                    shutil.rmtree(CAPTIONS_DIRS)
+                    shutil.rmtree(VIDEOS_DIRS)
+                except OSError as e:
+                    print(f"Error:{ e.strerror}")
         logger.debug('in Postflight')
