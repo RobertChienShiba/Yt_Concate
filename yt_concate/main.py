@@ -36,7 +36,7 @@ def print_usage():
 def customize_log_level(type, arg, inputs):
     try:
         arg = int(arg)
-        if arg >= 10 and arg <= 50:
+        if arg in (10,20,30,40,50):
             inputs[type] = arg
         else:
             print('Not in range of logging ')
