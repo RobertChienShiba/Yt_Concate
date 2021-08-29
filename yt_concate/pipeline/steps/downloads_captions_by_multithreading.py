@@ -17,7 +17,7 @@ class DownloadCaptions(Step):
         return data
 
     def write_captions(self, yt, inputs, utils):
-        logger = logging.getLogger('logs')
+        logger = logging.getLogger('yt_concate.logs')
         if inputs['fast']:
             if utils.caption_file_exist(yt):
                 logger.warning('Caption File Has already downloaded')

@@ -8,7 +8,7 @@ from yt_concate.pipeline.steps.step import Step
 
 class DownloadCaptions(Step):
     def process(self, data, inputs, utils):
-        logger=logging.getLogger('logs')
+        logger=logging.getLogger('yt_concate.logs')
         start=time.time()
         for yt in data:
             if utils.caption_file_exist(yt):

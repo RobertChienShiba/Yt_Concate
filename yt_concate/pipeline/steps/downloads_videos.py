@@ -8,7 +8,7 @@ from yt_concate.pipeline.steps.step import Step
 
 class DownloadVideos(Step):
     def process(self, data, inputs, utils):
-        logger = logging.getLogger('logs')
+        logger = logging.getLogger('yt_concate.logs')
         yt_set = {found.yt for found in data}
         for yt in yt_set:
             if yt.video_filepath_exist():

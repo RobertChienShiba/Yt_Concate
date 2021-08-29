@@ -1,9 +1,9 @@
 import os
 
-from setting import DOWNLOADS_DIRS
-from setting import CAPTIONS_DIRS
-from setting import VIDEOS_DIRS
-from setting import OUTPUT_DIRS
+from yt_concate.setting import DOWNLOADS_DIRS
+from yt_concate.setting import CAPTIONS_DIRS
+from yt_concate.setting import VIDEOS_DIRS
+from yt_concate.setting import OUTPUT_DIRS
 
 
 class Utils:

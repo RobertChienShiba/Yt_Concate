@@ -11,7 +11,7 @@ from yt_concate.pipeline.steps.step import Step
 class DownloadVideos(Step):
     def process(self, data, inputs, utils):
         start = time.time()
-        logger = logging.getLogger('logs')
+        logger = logging.getLogger('yt_concate.logs')
         yt_set = {found.yt for found in data}
         with futures.ThreadPoolExecutor(max_workers=40) as executor:
             [executor.submit(self.download_video, yt, inputs, logger) for yt in yt_set]

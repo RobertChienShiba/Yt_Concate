@@ -1,5 +1,6 @@
 from moviepy.editor import VideoFileClip
 from moviepy.editor import concatenate_videoclips
+import logging
 
 from yt_concate.pipeline.steps.step import Step
 
@@ -8,6 +9,7 @@ class EditVideos(Step):
 
     def process(self, data, inputs, utils):
         clips = []
+        logger=logging.getlogger('yt_concate.logs')
         for found in data:
             videopath = found.yt.video_filepath
             start, end = found.time.split('-->')

@@ -9,7 +9,7 @@ from yt_concate.setting import API_KEYS
 class GetVideoList(Step):
     def process(self, data, inputs, utils):
         channel_id = inputs['channel_id']
-        logger=logging.getLogger('logs')
+        logger=logging.getLogger('yt_concate.logs')
         if utils.video_list_filepath_exist(channel_id):
             logger.warning('video file has already existed')
             return self.read_file(utils.get_video_list_filepath(channel_id))

@@ -14,8 +14,8 @@ from yt_concate.pipeline.steps.search import Search
 # from yt_concate.pipeline.steps.downloads_videos import DownloadVideos
 from yt_concate.pipeline.steps.downloads_videos_by_multithreading import DownloadVideos
 from yt_concate.pipeline.steps.edit_videos import EditVideos
-from utils import Utils
-from logs import set_log
+from yt_concate.utils import Utils
+from yt_concate.logs import set_log
 
 #CHANNEL_ID = 'UCKSVUHI9rbbkXhvAXK-2uxA'
 
@@ -115,7 +115,7 @@ def main():
     utils = Utils()
     set_log(inputs['logfile_level'], inputs['logstream_level'])
     if utils.output_filepath_exist(inputs['channel_id'], inputs['search_word']):
-        logger = logging.getLogger('logs')
+        logger = logging.getLogger('yt_concate.logs')
         logger.debug('This video has already existed')
         return
     p = Pipeline(steps)
